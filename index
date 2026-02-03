@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi Amore 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 430px;
+    }
+
+    h1 {
+      color: #ff4b6e;
+      margin-bottom: 5px;
+    }
+
+    .nombre {
+      font-size: 22px;
+      color: #d6336c;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    #contador {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #ff4b6e;
+      font-weight: bold;
+    }
+
+    #mensajeFinal {
+      display: none;
+      margin-top: 15px;
+      font-size: 18px;
+      color: #d6336c;
+      font-weight: bold;
+    }
+
+    button {
+      background: #ccc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: not-allowed;
+      margin-top: 25px;
+    }
+
+    button.activo {
+      background: #ff4b6e;
+      cursor: pointer;
+      animation: vibrar 0.6s infinite;
+    }
+
+    @keyframes vibrar {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💖 Hola Aurora 💖</h1>
+    <div class="nombre">Mi Amore</div>
+
+    <p>Hay que esperar un momento especial…</p>
+
+    <h2>¿Quieres pasar San Valentín conmigo? 🌹</h2>
+
+    <div id="contador">⏳ Calculando latidos por ti…</div>
+
+    <div id="mensajeFinal">⚠️ No hay vuelta atrás, Amore… ⚠️</div>
+
+    <button id="boton" disabled>
+      ¡Sí, obvio! 😍
+    </button>
+  </div>
+
+  <script>
+    // 12 de febrero a las 17:00 (febrero = 1)
+    const fechaObjetivo = new Date(2026, 1, 12, 17, 0, 0);
+
+    const contador = document.getElementById("contador");
+    const boton = document.getElementById("boton");
+    const mensajeFinal = document.getElementById("mensajeFinal");
+
+    function actualizarContador() {
+      const ahora = new Date();
+      const diferencia = fechaObjetivo - ahora;
+
+      if (diferencia <= 0) {
+        contador.textContent = "💘 Aurora, ya puedes robarme el corazón 💘";
+        mensajeFinal.style.display = "block";
+
+        boton.disabled = false;
+        boton.classList.add("activo");
+        boton.onclick = () => {
+          window.location.href = "cita.html";
+        };
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      contador.textContent =
+        `⏳ Amore, faltan ${dias}d ${horas}h ${minutos}m ${segundos}s para que te robe el corazón 💕`;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+</body>
+</html>
