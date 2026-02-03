@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Nuestra cita 💖</title>
+<title>Nuestra cita 💋</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -13,9 +13,9 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #ffdde1, #ee9ca7);
+  background: linear-gradient(-45deg, #2b0a14, #6a0f49, #b5179e, #720026);
   background-size: 400% 400%;
-  animation: fondo 15s ease infinite;
+  animation: fondo 18s ease infinite;
   overflow-x: hidden;
 }
 
@@ -25,34 +25,51 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* CARD PRINCIPAL */
+/* CARD */
 .card {
   max-width: 620px;
   margin: 70px auto;
-  padding: 45px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  padding: 55px 45px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 35px 80px rgba(0,0,0,0.5);
   text-align: center;
   position: relative;
-  z-index: 2;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  color: #c9184a;
-  margin-bottom: 10px;
+  font-size: 38px;
+  color: #720026;
+  margin-bottom: 8px;
 }
 
 .sub {
-  font-size: 18px;
+  font-size: 19px;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-/* PLANNING */
+/* FRASE PELIGROSA */
+.frase-maleta {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  color: #b5179e;
+  margin: 30px 0 40px;
+  font-style: italic;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+
+.frase-maleta:hover::after {
+  content: " Yo me encargo del resto…";
+  display: block;
+  margin-top: 10px;
+  color: #720026;
+}
+
+/* LISTA */
 ul {
   list-style: none;
   padding: 0;
@@ -62,100 +79,104 @@ ul {
 }
 
 ul li {
-  margin: 12px 0;
+  margin: 14px 0;
 }
 
+/* SEPARADOR */
 .separador {
   height: 1px;
-  background: linear-gradient(to right, transparent, #ff4b6e, transparent);
-  margin: 25px 0;
+  background: linear-gradient(to right, transparent, #b5179e, transparent);
+  margin: 32px 0;
 }
 
 /* ESCAPADA */
 .escapada-titulo {
   font-weight: 600;
-  color: #c9184a;
-  margin-top: 10px;
+  color: #720026;
 }
 
 .escapada {
   opacity: 0;
-  transform: translateY(10px);
-  animation: aparecer 0.7s ease forwards;
+  transform: translateY(16px);
+  animation: aparecer 1s ease forwards;
 }
 
-.escapada:nth-child(1) { animation-delay: .2s }
-.escapada:nth-child(2) { animation-delay: .4s }
-.escapada:nth-child(3) { animation-delay: .6s }
-.escapada:nth-child(4) { animation-delay: .8s }
+.escapada:nth-child(1) { animation-delay: .4s }
+.escapada:nth-child(2) { animation-delay: .7s }
+.escapada:nth-child(3) { animation-delay: 1s }
+.escapada:nth-child(4) { animation-delay: 1.3s }
 
 @keyframes aparecer {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* MAPA */
 .mapa-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 12px 22px;
-  background: linear-gradient(135deg,#ff4b6e,#ff758f);
+  margin-top: 14px;
+  padding: 12px 26px;
+  background: linear-gradient(135deg,#720026,#b5179e);
   color: white;
-  border-radius: 25px;
+  border-radius: 32px;
   text-decoration: none;
   font-weight: 500;
-  box-shadow: 0 10px 25px rgba(255,75,110,0.4);
-  transition: transform .2s ease;
-}
-
-.mapa-btn:hover {
-  transform: scale(1.05);
+  box-shadow: 0 14px 34px rgba(114,0,38,0.5);
 }
 
 /* IMÁGENES */
 .imagenes-cita {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
-  margin-top: 35px;
+  margin-top: 42px;
   flex-wrap: wrap;
 }
 
 .imagenes-cita img {
   width: 260px;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
   cursor: pointer;
-  transition: transform .3s ease;
+  transition: transform .4s ease;
 }
 
 .imagenes-cita img:hover {
-  transform: scale(1.06);
+  transform: scale(1.1);
 }
 
-/* BOTÓN AMOR */
+/* BOTÓN */
 .boton-amor {
-  margin-top: 35px;
-  background: linear-gradient(135deg,#ff4b6e,#ff758f);
+  margin-top: 45px;
+  background: linear-gradient(135deg,#720026,#b5179e);
   color: white;
   border: none;
-  padding: 16px 40px;
-  font-size: 20px;
-  border-radius: 40px;
+  padding: 18px 46px;
+  font-size: 22px;
+  border-radius: 50px;
   cursor: pointer;
-  animation: latido 1.3s infinite;
-  box-shadow: 0 10px 30px rgba(255,75,110,0.5);
+  animation: latido 1.4s infinite, vibrar 6s infinite;
+  box-shadow: 0 18px 45px rgba(114,0,38,0.6);
 }
 
 @keyframes latido {
   0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  50% { transform: scale(1.12); }
   100% { transform: scale(1); }
+}
+
+@keyframes vibrar {
+  0%, 95%, 100% { transform: translateX(0); }
+  96% { transform: translateX(-1px); }
+  97% { transform: translateX(1px); }
+  98% { transform: translateX(-1px); }
+  99% { transform: translateX(1px); }
 }
 
 /* LIGHTBOX */
 #lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
   display: none;
   align-items: center;
   justify-content: center;
@@ -165,51 +186,44 @@ ul li {
 #lightbox img {
   max-width: 90vw;
   max-height: 80vh;
-  border-radius: 20px;
+  border-radius: 24px;
 }
 
 .destino {
-  margin-top: 15px;
-  font-size: 28px;
+  margin-top: 20px;
+  font-size: 30px;
   color: white;
   font-family: 'Playfair Display', serif;
 }
 
-/* MENSAJE SECRETO */
-#mensaje-secreto {
+/* MENSAJE FINAL */
+#mensaje-final {
   position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 25px 35px;
-  border-radius: 25px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-  font-size: 18px;
-  color: #c9184a;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
   display: none;
-  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: white;
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
   text-align: center;
+  padding: 30px;
 }
 
 /* CORAZONES */
 .heart {
   position: fixed;
   font-size: 22px;
-  animation: flotar 6s linear infinite;
-  opacity: .8;
+  animation: flotar 7s linear infinite;
+  opacity: .6;
 }
 
 @keyframes flotar {
   0% { transform: translateY(100vh); opacity: 0; }
-  10% { opacity: .8; }
+  15% { opacity: .6; }
   100% { transform: translateY(-10vh); opacity: 0; }
-}
-
-.tap {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #777;
 }
 </style>
 </head>
@@ -221,14 +235,18 @@ ul li {
 </audio>
 
 <div class="card" onclick="iniciarMusica()">
-  <h1>Gracias por decir que sí, Aurora 💖</h1>
-  <div class="sub">Mi Amore, esto es solo el principio…</div>
+  <h1>Aurora 💋</h1>
+  <div class="sub">Amore… esto no es una invitación cualquiera</div>
+
+  <div class="frase-maleta">
+    Tú solo tienes que hacer la maleta.
+  </div>
 
   <ul>
-    <li>🌅 Te recojo (sorpresa 😉)</li>
-    <li>🍽️ Cena romántica First Class</li>
-    <li>🍷 Una copa de vino y muchas risas</li>
-    <li>🌙 Paseo nocturno bajo las estrellas</li>
+    <li>🌅 Te recojo (sin preguntas)</li>
+    <li>🍽️ Cena lenta, miradas largas</li>
+    <li>🍷 Vino… y lo que surja</li>
+    <li>🌙 La noche no tiene horario</li>
   </ul>
 
   <div class="separador"></div>
@@ -247,24 +265,23 @@ ul li {
 
   <div class="imagenes-cita">
     <img src="restaurante.jpg">
-    <img src="boarding.jpg" onclick="abrirLightbox(this.src); mostrarMensajeSecreto();">
+    <img src="boarding.jpg" onclick="abrirLightbox(this.src)">
   </div>
 
-  <button class="boton-amor" onclick="teAmo(event)">Te amo ❤️</button>
-  <div class="tap">Toca la pantalla para activar la música</div>
+  <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
 </div>
 
 <div id="lightbox" onclick="this.style.display='none'">
   <div>
     <img id="lightbox-img">
-    <div class="destino">✈️ Destino: Nosotros</div>
+    <div class="destino">✈️ Destino: Tú y yo</div>
   </div>
 </div>
 
-<div id="mensaje-secreto">
-  💌 Aurora, Amore…<br>
-  este viaje no tiene vuelta,<br>
-  solo futuro contigo ❤️
+<div id="mensaje-final">
+  Amore…<br><br>
+  ya no hay marcha atrás.<br><br>
+  Esta historia empieza contigo ❤️
 </div>
 
 <script>
@@ -273,14 +290,16 @@ let musicaIniciada = false;
 
 function iniciarMusica(){
   if(!musicaIniciada){
+    musica.volume = 0;
     musica.play();
     musicaIniciada = true;
+    let v = 0;
+    const fade = setInterval(()=>{
+      v += 0.02;
+      musica.volume = Math.min(v,1);
+      if(v >= 1) clearInterval(fade);
+    },150);
   }
-}
-
-function teAmo(e){
-  e.stopPropagation();
-  alert("💖 Yo te amo más, Amore 💖");
 }
 
 function abrirLightbox(src){
@@ -288,25 +307,23 @@ function abrirLightbox(src){
   document.getElementById("lightbox").style.display = "flex";
 }
 
-function mostrarMensajeSecreto(){
-  const m = document.getElementById("mensaje-secreto");
-  m.style.display = "block";
-  setTimeout(()=>m.style.display="none",6000);
+function final(e){
+  e.stopPropagation();
+  document.getElementById("mensaje-final").style.display = "flex";
 }
 
 function corazon(){
   const c = document.createElement("div");
   c.className = "heart";
-  c.innerText = "💖";
+  c.innerText = "💜";
   c.style.left = Math.random()*100+"vw";
-  c.style.fontSize = 16+Math.random()*20+"px";
-  c.style.animationDuration = 4+Math.random()*3+"s";
+  c.style.fontSize = 18+Math.random()*22+"px";
+  c.style.animationDuration = 5+Math.random()*3+"s";
   document.body.appendChild(c);
-  setTimeout(()=>c.remove(),7000);
+  setTimeout(()=>c.remove(),8000);
 }
-setInterval(corazon,350);
+setInterval(corazon,450);
 </script>
 
 </body>
 </html>
-
