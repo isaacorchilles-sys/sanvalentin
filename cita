@@ -264,7 +264,7 @@ ul li {
   </ul>
 
   <div class="imagenes-cita">
-    <img src="restaurante.jpg">
+    <img src="https://github.com/isaacorchilles-sys/sanvalentin/blob/main/Captura%20de%20pantalla%202026-02-03%20a%20las%2014.45.17.png">
     <img src="boarding.jpg" onclick="abrirLightbox(this.src)">
   </div>
 
