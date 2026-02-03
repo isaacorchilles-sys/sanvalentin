@@ -265,7 +265,7 @@ ul li {
 
   <div class="imagenes-cita">
     <img src="unnamed (2).png">
-    <img src="‎Captura de pantalla 2026-02-03 a las 14.45.17.png‎" onclick="abrirLightbox(this.src)">
+    <img src="‎boarding.png‎" onclick="abrirLightbox(this.src)">
   </div>
 
   <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
