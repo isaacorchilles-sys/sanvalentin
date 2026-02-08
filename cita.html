@@ -128,7 +128,7 @@ ul li {
   display: flex;
   gap: 24px;
   justify-content: center;
-  margin-top: 42px;
+  margin-top: 72px;
   flex-wrap: wrap;
 }
 
@@ -264,8 +264,8 @@ ul li {
   </ul>
 
   <div class="imagenes-cita">
-    <img src="restaurante.png">
-    <img src="boarding.png" onclick="abrirLightbox(this.src)">
+    <img src="boarding.png">
+    <img src="restaurante.png" onclick="abrirLightbox(this.src)">
   </div>
 
   <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
@@ -290,7 +290,7 @@ let musicaIniciada = false;
 
 function iniciarMusica(){
   if(!musicaIniciada){
-    musica.volume = 0;
+    musica.volume = 20;
     musica.play();
     musicaIniciada = true;
     let v = 0;
