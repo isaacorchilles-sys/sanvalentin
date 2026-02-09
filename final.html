@@ -10,44 +10,59 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #ff4d8d, #b1005c, #2b0016);
+  background: radial-gradient(circle at top, #ff4d8d, #8b003d, #2b0016);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-/* corazones */
-.heart {
+/* árbol */
+.tree {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.leaf {
   position: absolute;
   width: 18px;
   height: 18px;
-  background: rgba(255,255,255,0.25);
+  background: #ff8fb3;
   transform: rotate(45deg);
-  animation: float 10s linear infinite;
 }
 
-.heart::before,
-.heart::after {
+.leaf::before,
+.leaf::after {
   content: "";
   position: absolute;
   width: 18px;
   height: 18px;
-  background: rgba(255,255,255,0.25);
+  background: #ff8fb3;
   border-radius: 50%;
 }
 
-.heart::before { top: -9px; left: 0; }
-.heart::after { left: -9px; top: 0; }
+.leaf::before { top: -9px; left: 0; }
+.leaf::after { left: -9px; top: 0; }
 
-@keyframes float {
-  0% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+/* tronco */
+.trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  height: 120px;
+  background: #4b1c2a;
+  transform: translateX(-50%);
+  border-radius: 10px;
 }
 
 /* tarjeta */
@@ -62,23 +77,16 @@ body {
   color: #fff;
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   text-align: left;
-  opacity: 0;
-  transform: scale(0.95);
-  filter: blur(10px);
-  animation: appear 1.8s ease forwards;
+  animation: appear 1.5s ease forwards;
 }
 
 @keyframes appear {
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 15px;
 }
 
 .code {
@@ -88,7 +96,6 @@ h1 {
   font-family: monospace;
   font-size: 0.95em;
   color: #ffb3d9;
-  min-height: 120px;
   white-space: pre-line;
 }
 
@@ -96,93 +103,50 @@ h1 {
   text-align: center;
   margin-top: 20px;
   font-size: 1em;
-  opacity: 0.9;
-}
-
-/* mensaje secreto */
-.secret {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  padding: 15px 25px;
-  border-radius: 30px;
-  color: #ffd1e8;
-  font-size: 1em;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-.secret.show {
-  opacity: 1;
 }
 </style>
 </head>
 
 <body>
 
-<!-- corazones -->
-<script>
-for (let i = 0; i < 45; i++) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (6 + Math.random() * 6) + "s";
-  h.style.transform = "scale(" + (0.5 + Math.random()) + ")";
-  document.body.appendChild(h);
-}
-</script>
+<!-- árbol de corazones -->
+<div class="tree">
+  <div class="trunk"></div>
+
+  <!-- copa -->
+  <script>
+    const tree = document.querySelector('.tree');
+    for (let i = 0; i < 120; i++) {
+      const leaf = document.createElement("div");
+      leaf.className = "leaf";
+
+      const x = 150 + (Math.random() - 0.5) * 200;
+      const y = 50 + Math.random() * 200;
+      leaf.style.left = x + "px";
+      leaf.style.top = y + "px";
+
+      tree.appendChild(leaf);
+    }
+  </script>
+</div>
 
 <!-- tarjeta -->
 <div class="card">
   <h1>Para ti, Amore ❤️</h1>
 
-  <div class="code" id="typewriter"></div>
+  <div class="code">
+&lt;plan&gt;
+  Escapada romántica
+  Dos personas
+  Un destino
+  Sin prisas
+&lt;/plan&gt;
+  </div>
 
   <div class="footer">
     Solo tienes que hacer la maleta 😌
   </div>
 </div>
-
-<div class="secret" id="secret">
-  Te recojo pronto… 💕
-</div>
-
-<script>
-/* texto que se escribe solo */
-const text = `
-<plan>
-  Escapada romántica
-  Dos personas
-  Un destino
-  Sin horarios
-  Sin prisas
-</plan>
-`;
-
-let i = 0;
-const speed = 40;
-const target = document.getElementById("typewriter");
-
-function type() {
-  if (i < text.length) {
-    target.textContent += text.charAt(i);
-    i++;
-    setTimeout(type, speed);
-  }
-}
-
-setTimeout(type, 1200);
-
-/* mensaje secreto al tocar */
-document.body.addEventListener("click", () => {
-  const s = document.getElementById("secret");
-  s.classList.add("show");
-  setTimeout(() => s.classList.remove("show"), 3000);
-});
-</script>
 
 </body>
 </html>
