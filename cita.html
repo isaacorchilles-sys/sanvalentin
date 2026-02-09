@@ -2,347 +2,123 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Nuestra cita 💋</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Nuestra Cita ❤️</title>
 
 <style>
-* { box-sizing: border-box; }
-  .boton-final {
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #1a0010, #000);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+.sub {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+/* fotos */
+.foto-grande {
+  width: 95%;
+  max-width: 800px;
+  margin: 30px auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* tarjeta planning */
+.plan {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  text-align: left;
+}
+
+.plan h2 {
+  text-align: center;
+}
+
+.plan p {
+  margin: 8px 0;
+}
+
+/* botón final */
+.boton-final {
   display: inline-block;
-  margin: 40px auto;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #c48b9f, #8b3a62);
+  margin: 50px auto;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #ff5c8a, #8b003d);
   color: white;
   text-decoration: none;
-  font-size: 1.1em;
-  border-radius: 30px;
+  font-size: 1.2em;
+  border-radius: 40px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s;
 }
 
 .boton-final:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-}
-
-<a href="final.html" class="boton-final">Ver una última sorpresa ❤️</a>
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #2b0a14, #6a0f49, #b5179e, #720026);
-  background-size: 400% 400%;
-  animation: fondo 18s ease infinite;
-  overflow-x: hidden;
-}
-
-@keyframes fondo {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* CARD */
-.card {
-  max-width: 620px;
-  margin: 70px auto;
-  padding: 55px 45px;
-  border-radius: 34px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 35px 80px rgba(0,0,0,0.5);
-  text-align: center;
-  position: relative;
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 38px;
-  color: #720026;
-  margin-bottom: 8px;
-}
-
-.sub {
-  font-size: 19px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-/* FRASE PELIGROSA */
-.frase-maleta {
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  color: #b5179e;
-  margin: 30px 0 40px;
-  font-style: italic;
-  cursor: pointer;
-  transition: opacity .4s ease;
-}
-
-.frase-maleta:hover::after {
-  content: " Yo me encargo del resto…";
-  display: block;
-  margin-top: 10px;
-  color: #720026;
-}
-
-/* LISTA */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  font-size: 18px;
-}
-
-ul li {
-  margin: 14px 0;
-}
-
-/* SEPARADOR */
-.separador {
-  height: 1px;
-  background: linear-gradient(to right, transparent, #b5179e, transparent);
-  margin: 32px 0;
-}
-
-/* ESCAPADA */
-.escapada-titulo {
-  font-weight: 600;
-  color: #720026;
-}
-
-.escapada {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: aparecer 1s ease forwards;
-}
-
-.escapada:nth-child(1) { animation-delay: .4s }
-.escapada:nth-child(2) { animation-delay: .7s }
-.escapada:nth-child(3) { animation-delay: 1s }
-.escapada:nth-child(4) { animation-delay: 1.3s }
-
-@keyframes aparecer {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* MAPA */
-.mapa-btn {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 12px 26px;
-  background: linear-gradient(135deg,#720026,#b5179e);
-  color: white;
-  border-radius: 32px;
-  text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 14px 34px rgba(114,0,38,0.5);
-}
-
-/* IMÁGENES */
-.imagenes-cita {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 72px;
-  flex-wrap: wrap;
-}
-
-.imagenes-cita img {
-  width: 260px;
-  border-radius: 24px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-  cursor: pointer;
-  transition: transform .4s ease;
-}
-
-.imagenes-cita img:hover {
-  transform: scale(1.1);
-}
-
-/* BOTÓN */
-.boton-amor {
-  margin-top: 45px;
-  background: linear-gradient(135deg,#720026,#b5179e);
-  color: white;
-  border: none;
-  padding: 18px 46px;
-  font-size: 22px;
-  border-radius: 50px;
-  cursor: pointer;
-  animation: latido 1.4s infinite, vibrar 6s infinite;
-  box-shadow: 0 18px 45px rgba(114,0,38,0.6);
-}
-
-@keyframes latido {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-@keyframes vibrar {
-  0%, 95%, 100% { transform: translateX(0); }
-  96% { transform: translateX(-1px); }
-  97% { transform: translateX(1px); }
-  98% { transform: translateX(-1px); }
-  99% { transform: translateX(1px); }
-}
-
-/* LIGHTBOX */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-#lightbox img {
-  max-width: 90vw;
-  max-height: 80vh;
-  border-radius: 24px;
-}
-
-.destino {
-  margin-top: 20px;
-  font-size: 30px;
-  color: white;
-  font-family: 'Playfair Display', serif;
-}
-
-/* MENSAJE FINAL */
-#mensaje-final {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  color: white;
-  font-size: 28px;
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  padding: 30px;
-}
-
-/* CORAZONES */
-.heart {
-  position: fixed;
-  font-size: 22px;
-  animation: flotar 7s linear infinite;
-  opacity: .6;
-}
-
-@keyframes flotar {
-  0% { transform: translateY(100vh); opacity: 0; }
-  15% { opacity: .6; }
-  100% { transform: translateY(-10vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<audio id="musica" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_3a7a1c3a8c.mp3">
-</audio>
+<div class="container">
 
-<div class="card" onclick="iniciarMusica()">
-  <h1>Aurora 💋</h1>
-  <div class="sub">Amore… esto no es una invitación cualquiera</div>
+<h1>Escapada Romántica 💕</h1>
+<p class="sub">Amore, este es nuestro plan…</p>
 
-  <div class="frase-maleta">
-    Tú solo tienes que hacer la maleta.
-  </div>
+<!-- FOTO 1 -->
+<img src="boarding.png" class="foto-grande">
 
-  <ul>
-    <li>🌅 Te recojo (sin preguntas)</li>
-    <li>🍽️ Cena lenta, miradas largas</li>
-    <li>🍷 Vino… y lo que surja</li>
-    <li>🌙 La noche no tiene horario</li>
-  </ul>
+<!-- FOTO 2 -->
+<img src="restaurante.png" class="foto-grande">
 
-  <div class="separador"></div>
+<!-- PLANNING -->
+<div class="plan">
 
-  <ul>
-    <li class="escapada-titulo">🏨 Escapada Romántica</li>
-    <li class="escapada">📍 La Plaza 2</li>
-    <li class="escapada">📌 Calle Plaza Santa Teresa, 9 – Alicante</li>
-    <li class="escapada">📞 637 271 970</li>
-    <li class="escapada">
-      <a class="mapa-btn" href="https://www.google.com/maps/search/?api=1&query=Calle+Plaza+Santa+Teresa+9+Alicante" target="_blank">
-        🗺️ Ver ubicación
-      </a>
-    </li>
-  </ul>
+<h2>✨ Planning de la cita</h2>
 
-  <div class="imagenes-cita">
-    <img src="boarding.png">
-    <img src="restaurante.png" onclick="abrirLightbox(this.src)">
-  </div>
+<p><strong>Cena romántica</strong></p>
+<p>Un lugar especial para nosotros dos</p>
 
-  <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
+<br>
+
+<p><strong>Escapada Romántica</strong></p>
+<p>Reserva en: La Plaza 2</p>
+<p>Dirección: Calle Plaza Santa Teresa, 9, Alicante</p>
+<p>Teléfono: 637271970</p>
+
+<br>
+
+<p style="text-align:center;font-size:1.1em;">
+💼 Solo tienes que hacer la maleta
+</p>
+
 </div>
 
-<div id="lightbox" onclick="this.style.display='none'">
-  <div>
-    <img id="lightbox-img">
-    <div class="destino">✈️ Destino: Tú y yo</div>
-  </div>
+<!-- BOTÓN A PÁGINA FINAL -->
+<a href="final.html" class="boton-final">
+Una última sorpresa ❤️
+</a>
+
 </div>
-
-<div id="mensaje-final">
-  Amore…<br><br>
-  ya no hay marcha atrás.<br><br>
-  Esta historia empieza contigo ❤️
-</div>
-
-<script>
-const musica = document.getElementById("musica");
-let musicaIniciada = false;
-
-function iniciarMusica(){
-  if(!musicaIniciada){
-    musica.volume = 20;
-    musica.play();
-    musicaIniciada = true;
-    let v = 0;
-    const fade = setInterval(()=>{
-      v += 0.02;
-      musica.volume = Math.min(v,1);
-      if(v >= 1) clearInterval(fade);
-    },150);
-  }
-}
-
-function abrirLightbox(src){
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
-}
-
-function final(e){
-  e.stopPropagation();
-  document.getElementById("mensaje-final").style.display = "flex";
-}
-
-function corazon(){
-  const c = document.createElement("div");
-  c.className = "heart";
-  c.innerText = "💜";
-  c.style.left = Math.random()*100+"vw";
-  c.style.fontSize = 18+Math.random()*22+"px";
-  c.style.animationDuration = 5+Math.random()*3+"s";
-  document.body.appendChild(c);
-  setTimeout(()=>c.remove(),8000);
-}
-setInterval(corazon,450);
-</script>
 
 </body>
 </html>
