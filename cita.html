@@ -2,121 +2,182 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Nuestra Cita ❤️</title>
+<title>Nuestra cita 💋</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #1a0010, #000);
-  color: white;
-  text-align: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #2b0a14, #6a0f49, #b5179e, #720026);
+  background-size: 400% 400%;
+  animation: fondo 18s ease infinite;
+  overflow-x: hidden;
 }
 
-.container {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
+@keyframes fondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  max-width: 620px;
+  margin: 70px auto;
+  padding: 55px 45px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 35px 80px rgba(0,0,0,0.5);
+  text-align: center;
+  position: relative;
 }
 
 h1 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  color: #720026;
+  margin-bottom: 8px;
 }
 
 .sub {
-  opacity: 0.8;
-  margin-bottom: 30px;
+  font-size: 19px;
+  color: #555;
+  margin-bottom: 20px;
 }
 
-/* fotos */
-.foto-grande {
-  width: 95%;
-  max-width: 800px;
-  margin: 30px auto;
-  display: block;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+.frase-maleta {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  color: #b5179e;
+  margin: 30px 0 40px;
+  font-style: italic;
 }
 
-/* tarjeta planning */
-.plan {
-  background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 20px;
-  margin-top: 30px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: left;
+  font-size: 18px;
 }
 
-.plan h2 {
-  text-align: center;
+ul li {
+  margin: 14px 0;
 }
 
-.plan p {
-  margin: 8px 0;
+.separador {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #b5179e, transparent);
+  margin: 32px 0;
 }
 
-/* botón final */
-.boton-final {
+.escapada-titulo {
+  font-weight: 600;
+  color: #720026;
+}
+
+.mapa-btn {
   display: inline-block;
-  margin: 50px auto;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, #ff5c8a, #8b003d);
+  margin-top: 14px;
+  padding: 12px 26px;
+  background: linear-gradient(135deg,#720026,#b5179e);
   color: white;
+  border-radius: 32px;
   text-decoration: none;
-  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.imagenes-cita {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 42px;
+  flex-wrap: wrap;
+}
+
+.imagenes-cita img {
+  width: 260px;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+}
+
+.boton-amor {
+  margin-top: 45px;
+  background: linear-gradient(135deg,#720026,#b5179e);
+  color: white;
+  border: none;
+  padding: 18px 46px;
+  font-size: 22px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* 🔥 BOTÓN NUEVO */
+.boton-final {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 14px 38px;
+  font-size: 18px;
   border-radius: 40px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: 0.3s;
+  background: transparent;
+  color: #720026;
+  border: 2px solid #b5179e;
+  text-decoration: none;
+  transition: all .4s ease;
 }
 
 .boton-final:hover {
-  transform: scale(1.05);
+  background: linear-gradient(135deg,#720026,#b5179e);
+  color: white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
+  <h1>Aurora 💋</h1>
+  <div class="sub">Amore… esto no es una invitación cualquiera</div>
 
-<h1>Escapada Romántica 💕</h1>
-<p class="sub">Amore, este es nuestro plan…</p>
+  <div class="frase-maleta">
+    Tú solo tienes que hacer la maleta.
+  </div>
 
-<!-- FOTO 1 -->
-<img src="boarding.png" class="foto-grande">
+  <ul>
+    <li>🌅 Te recojo (sin preguntas)</li>
+    <li>🍽️ Cena lenta, miradas largas</li>
+    <li>🍷 Vino… y lo que surja</li>
+    <li>🌙 La noche no tiene horario</li>
+  </ul>
 
-<!-- FOTO 2 -->
-<img src="restaurante.png" class="foto-grande">
+  <div class="separador"></div>
 
-<!-- PLANNING -->
-<div class="plan">
+  <ul>
+    <li class="escapada-titulo">🏨 Escapada Romántica</li>
+    <li>📍 La Plaza 2</li>
+    <li>📌 Calle Plaza Santa Teresa, 9 – Alicante</li>
+    <li>📞 637 271 970</li>
+    <li>
+      <a class="mapa-btn" href="https://www.google.com/maps/search/?api=1&query=Calle+Plaza+Santa+Teresa+9+Alicante" target="_blank">
+        🗺️ Ver ubicación
+      </a>
+    </li>
+  </ul>
 
-<h2>✨ Planning de la cita</h2>
+  <div class="imagenes-cita">
+    <img src="restaurante.jpg">
+    <img src="boarding.jpg">
+  </div>
 
-<p><strong>Cena romántica</strong></p>
-<p>Un lugar especial para nosotros dos</p>
+  <button class="boton-amor">Ven conmigo ❤️</button>
 
-<br>
-
-<p><strong>Escapada Romántica</strong></p>
-<p>Reserva en: La Plaza 2</p>
-<p>Dirección: Calle Plaza Santa Teresa, 9, Alicante</p>
-<p>Teléfono: 637271970</p>
-
-<br>
-
-<p style="text-align:center;font-size:1.1em;">
-💼 Solo tienes que hacer la maleta
-</p>
-
-</div>
-
-<!-- BOTÓN A PÁGINA FINAL -->
-<a href="final.html" class="boton-final">
-Una última sorpresa ❤️
-</a>
+  <!-- 🔥 BOTÓN A LA PÁGINA FINAL -->
+  <a href="final.html" class="boton-final">Quiero ver algo más… 💫</a>
 
 </div>
 
