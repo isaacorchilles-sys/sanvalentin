@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi San Valentín</title>
+    <style>
+        /* --- ESTILOS CSS --- */
+        body {
+            background-color: #ffc0cb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff9f0;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+            z-index: 10;
+        }
+
+        /* El Árbol */
+        .tree {
+            position: relative;
+            height: 220px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .trunk {
+            width: 12px;
+            height: 90px;
+            background: linear-gradient(to right, #5d4037, #3e2723);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        .hearts-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 150px;
+        }
+
+        /* Estilo de los Corazones-Hoja */
+        .heart-leaf {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff4d6d;
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: fadeInHeart 1s ease-out forwards;
+        }
+
+        .heart-leaf::before,
+        .heart-leaf::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: inherit;
+            border-radius: 50%;
+        }
+
+        .heart-leaf::before { top: -8px; left: 0; }
+        .heart-leaf::after { left: 8px; top: 0; }
+
+        @keyframes fadeInHeart {
+            from { opacity: 0; transform: rotate(-45deg) scale(0); }
+            to { opacity: 1; transform: rotate(-45deg) scale(1); }
+        }
+
+        /* Texto y Contador */
+        .message h2 { color: #c2185b; margin-bottom: 5px; font-size: 1.4rem; }
+        .message p { color: #555; font-size: 1rem; margin: 5px 0; }
+        
+        #timer {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            border: 1px dashed #ff4d6d;
+        }
+
+        #countdown {
+            display: block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #d32f2f;
+            margin-top: 5px;
+        }
+
+        h3 { color: #c2185b; margin-top: 20px; letter-spacing: 2px; }
+
+        /* Corazones de fondo cayendo */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 20px;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="tree">
+            <div class="trunk"></div>
+            <div class="hearts-container" id="hearts-box"></div>
+        </div>
+        
+        <div class="message">
+            <h2>Para el amor de mi vida:</h2>
+            <p>Si pudiera elegir un lugar seguro, sería a tu lado.</p>
+            <p>Cuanto más tiempo estoy contigo, más te amo.</p>
+            
+            <div id="timer">
+                <p>Mi amor por ti comenzó hace...</p>
+                <span id="countdown">Cargando tiempo...</span>
+            </div>
+            
+            <h3>— I Love You —</h3>
+        </div>
+    </div>
+
+    <script>
+        /* --- LÓGICA JAVASCRIPT --- */
+
+        // 1. CONFIGURA TU FECHA AQUÍ (Año, Mes-1, Día, Hora, Minutos)
+        // Ejemplo: 14 de febrero de 2024 -> (2024, 1, 14, 0, 0)
+        const fechaInicio = new Date(2024, 1, 14, 0, 0, 0); 
+
+        // 2. Función del Contador
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicio;
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferencia / 1000) % 60);
+
+            document.getElementById('countdown').innerHTML = 
+                `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        }
+
+        // 3. Generar Corazones en el Árbol
+        function crearArbol() {
+            const contenedor = document.getElementById('hearts-box');
+            const totalCorazones = 70;
+
+            for (let i = 0; i < totalCorazones; i++) {
+                const corazon = document.createElement('div');
+                corazon.classList.add('heart-leaf');
+
+                // Posición aleatoria en forma de copa de árbol
+                const angulo = Math.random() * Math.PI * 2;
+                const radio = Math.random() * 90; 
+                const x = Math.cos(angulo) * radio + 100; 
+                const y = Math.sin(angulo) * (radio * 0.8) + 60;
+
+                corazon.style.left = `${x}px`;
+                corazon.style.top = `${y}px`;
+                corazon.style.animationDelay = `${Math.random() * 3}s`;
+                
+                // Variantes de tamaño y color
+                const escala = 0.4 + Math.random() * 0.8;
+                corazon.style.transform = `rotate(-45deg) scale(${escala})`;
+                if(Math.random() > 0.5) corazon.style.backgroundColor = "#ff758f";
+                if(Math.random() > 0.8) corazon.style.backgroundColor = "#c2185b";
+
+                contenedor.appendChild(corazon);
+            }
+        }
+
+        // 4. Corazones cayendo en el fondo
+        function crearCorazonesFondo() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        // Iniciar todo
+        window.onload = () => {
+            crearArbol();
+            setInterval(actualizarContador, 1000);
+            setInterval(crearCorazonesFondo, 300);
+            actualizarContador();
+        };
+    </script>
+</body>
+</html>
