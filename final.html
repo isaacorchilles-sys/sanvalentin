@@ -3,96 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <title>Para ti, Amore ❤️</title>
+
 <style>
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: radial-gradient(circle at top, #ff5c8a, #b1005c, #2b0016);
   font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #ff5c8a, #b1005c, #2b0016);
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* LADO ÁRBOL */
+.tree-area {
+  width: 50%;
+  position: relative;
 }
 
 canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.card {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* LADO TEXTO */
+.text-area {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.text-box {
   background: rgba(0,0,0,0.75);
   padding: 30px;
-  border-radius: 22px;
-  width: 90%;
-  max-width: 420px;
-  color: #fff;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-  text-align: left;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.code {
-  background: #111;
-  border-radius: 14px;
-  padding: 16px;
+#typewriter {
   font-family: monospace;
-  font-size: 0.95em;
-  color: #ffb3d9;
+  font-size: 1.05em;
   white-space: pre-line;
+  color: #ffd1e8;
 }
 
-.footer {
+.counter {
+  margin-top: 25px;
+  font-size: 1.2em;
   text-align: center;
-  margin-top: 20px;
-  font-size: 1em;
-  opacity: 0.9;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* MÓVIL */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .tree-area, .text-area {
+    width: 100%;
+    height: 50%;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="canvas"></canvas>
+<div class="container">
 
-<div class="card">
-  <h1>Para ti, Amore ❤️</h1>
-
-  <div class="code">
-&lt;plan&gt;
-  Escapada romántica
-  Dos personas
-  Un destino
-  Sin horarios
-  Sin prisas
-&lt;/plan&gt;
+  <!-- ÁRBOL -->
+  <div class="tree-area">
+    <canvas id="treeCanvas"></canvas>
   </div>
 
-  <div class="footer">
-    Solo tienes que hacer la maleta 😌
+  <!-- TEXTO -->
+  <div class="text-area">
+    <div class="text-box">
+      <div id="typewriter"></div>
+      <div class="counter" id="counter"></div>
+    </div>
   </div>
+
 </div>
 
 <script>
-const canvas = document.getElementById("canvas");
+/* ---------- ÁRBOL DE CORAZONES ---------- */
+const canvas = document.getElementById("treeCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.onresize = () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-};
+function resize() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
 function heart(t) {
   return {
@@ -101,48 +115,89 @@ function heart(t) {
   };
 }
 
-let points = [];
-for (let t = 0; t < Math.PI * 2; t += 0.02) {
+let targets = [];
+for (let t = 0; t < Math.PI * 2; t += 0.03) {
   const h = heart(t);
-  points.push({ x: h.x, y: h.y });
+  targets.push({ x: h.x, y: h.y });
 }
 
 let particles = [];
+let max = 800;
+let index = 0;
 
-function createTree() {
-  particles = [];
-  for (let i = 0; i < 900; i++) {
-    const p = points[Math.floor(Math.random() * points.length)];
+function animateTree() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (index < max) {
+    const p = targets[Math.floor(Math.random() * targets.length)];
     particles.push({
       x: canvas.width / 2,
-      y: canvas.height * 0.7,
-      tx: canvas.width / 2 + p.x * 15 + (Math.random() - 0.5) * 10,
-      ty: canvas.height * 0.45 + p.y * 15 + (Math.random() - 0.5) * 10,
-      alpha: 0
+      y: canvas.height * 0.85,
+      tx: canvas.width / 2 + p.x * 14,
+      ty: canvas.height * 0.45 + p.y * 14
     });
+    index++;
   }
-}
-
-createTree();
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   particles.forEach(p => {
     p.x += (p.tx - p.x) * 0.05;
     p.y += (p.ty - p.y) * 0.05;
-    p.alpha += 0.01;
-
-    ctx.fillStyle = `rgba(255,140,180,${Math.min(p.alpha,1)})`;
+    ctx.fillStyle = "rgba(255,150,190,0.9)";
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
     ctx.fill();
   });
 
-  requestAnimationFrame(draw);
+  requestAnimationFrame(animateTree);
 }
 
-draw();
+animateTree();
+
+/* ---------- TEXTO MAQUINA ---------- */
+const text = `
+Amore,
+
+Esto no es solo un plan.
+Es una promesa.
+Una escapada.
+Un nosotros.
+
+Sin horarios.
+Sin prisas.
+Sin explicaciones.
+
+Solo tú y yo.
+`;
+
+let i = 0;
+const speed = 40;
+const target = document.getElementById("typewriter");
+
+function typeWriter() {
+  if (i < text.length) {
+    target.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  } else {
+    document.getElementById("counter").style.opacity = 1;
+  }
+}
+
+setTimeout(typeWriter, 1000);
+
+/* ---------- CONTADOR DÍAS JUNTOS ---------- */
+/* CAMBIA ESTA FECHA */
+const startDate = new Date("2023-05-12");
+
+function updateCounter() {
+  const today = new Date();
+  const diff = today - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("counter").textContent =
+    `Llevamos ${days} días juntos ❤️`;
+}
+
+updateCounter();
 </script>
 
 </body>
