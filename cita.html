@@ -51,7 +51,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* FRASE PELIGROSA */
 .frase-maleta {
   font-family: 'Playfair Display', serif;
   font-size: 23px;
@@ -69,7 +68,6 @@ h1 {
   color: #720026;
 }
 
-/* LISTA */
 ul {
   list-style: none;
   padding: 0;
@@ -82,14 +80,12 @@ ul li {
   margin: 14px 0;
 }
 
-/* SEPARADOR */
 .separador {
   height: 1px;
   background: linear-gradient(to right, transparent, #b5179e, transparent);
   margin: 32px 0;
 }
 
-/* ESCAPADA */
 .escapada-titulo {
   font-weight: 600;
   color: #720026;
@@ -110,7 +106,6 @@ ul li {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* MAPA */
 .mapa-btn {
   display: inline-block;
   margin-top: 14px;
@@ -123,7 +118,6 @@ ul li {
   box-shadow: 0 14px 34px rgba(114,0,38,0.5);
 }
 
-/* IMÁGENES */
 .imagenes-cita {
   display: flex;
   gap: 24px;
@@ -144,7 +138,6 @@ ul li {
   transform: scale(1.1);
 }
 
-/* BOTÓN */
 .boton-amor {
   margin-top: 45px;
   background: linear-gradient(135deg,#720026,#b5179e);
@@ -172,7 +165,24 @@ ul li {
   99% { transform: translateX(1px); }
 }
 
-/* LIGHTBOX */
+/* BOTÓN NUEVO */
+.boton-final {
+  margin-top: 20px;
+  background: transparent;
+  color: #720026;
+  border: 2px solid #b5179e;
+  padding: 14px 36px;
+  font-size: 18px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.boton-final:hover {
+  background: linear-gradient(135deg,#720026,#b5179e);
+  color: white;
+}
+
 #lightbox {
   position: fixed;
   inset: 0;
@@ -196,7 +206,6 @@ ul li {
   font-family: 'Playfair Display', serif;
 }
 
-/* MENSAJE FINAL */
 #mensaje-final {
   position: fixed;
   inset: 0;
@@ -212,7 +221,6 @@ ul li {
   padding: 30px;
 }
 
-/* CORAZONES */
 .heart {
   position: fixed;
   font-size: 22px;
@@ -269,6 +277,12 @@ ul li {
   </div>
 
   <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
+
+  <!-- BOTÓN QUE LLEVA A LA PÁGINA FINAL -->
+  <a href="final.html">
+    <button class="boton-final">Quiero ver algo más… 💫</button>
+  </a>
+
 </div>
 
 <div id="lightbox" onclick="this.style.display='none'">
