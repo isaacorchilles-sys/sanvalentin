@@ -25,6 +25,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* CARD */
 .card {
   max-width: 620px;
   margin: 70px auto;
@@ -50,14 +51,25 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* FRASE PELIGROSA */
 .frase-maleta {
   font-family: 'Playfair Display', serif;
   font-size: 23px;
   color: #b5179e;
   margin: 30px 0 40px;
   font-style: italic;
+  cursor: pointer;
+  transition: opacity .4s ease;
 }
 
+.frase-maleta:hover::after {
+  content: " Yo me encargo del resto…";
+  display: block;
+  margin-top: 10px;
+  color: #720026;
+}
+
+/* LISTA */
 ul {
   list-style: none;
   padding: 0;
@@ -70,17 +82,35 @@ ul li {
   margin: 14px 0;
 }
 
+/* SEPARADOR */
 .separador {
   height: 1px;
   background: linear-gradient(to right, transparent, #b5179e, transparent);
   margin: 32px 0;
 }
 
+/* ESCAPADA */
 .escapada-titulo {
   font-weight: 600;
   color: #720026;
 }
 
+.escapada {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: aparecer 1s ease forwards;
+}
+
+.escapada:nth-child(1) { animation-delay: .4s }
+.escapada:nth-child(2) { animation-delay: .7s }
+.escapada:nth-child(3) { animation-delay: 1s }
+.escapada:nth-child(4) { animation-delay: 1.3s }
+
+@keyframes aparecer {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MAPA */
 .mapa-btn {
   display: inline-block;
   margin-top: 14px;
@@ -90,8 +120,10 @@ ul li {
   border-radius: 32px;
   text-decoration: none;
   font-weight: 500;
+  box-shadow: 0 14px 34px rgba(114,0,38,0.5);
 }
 
+/* IMÁGENES */
 .imagenes-cita {
   display: flex;
   gap: 24px;
@@ -104,8 +136,15 @@ ul li {
   width: 260px;
   border-radius: 24px;
   box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform .4s ease;
 }
 
+.imagenes-cita img:hover {
+  transform: scale(1.1);
+}
+
+/* BOTÓN */
 .boton-amor {
   margin-top: 45px;
   background: linear-gradient(135deg,#720026,#b5179e);
@@ -115,32 +154,87 @@ ul li {
   font-size: 22px;
   border-radius: 50px;
   cursor: pointer;
+  animation: latido 1.4s infinite, vibrar 6s infinite;
+  box-shadow: 0 18px 45px rgba(114,0,38,0.6);
 }
 
-/* 🔥 BOTÓN NUEVO */
-.boton-final {
+@keyframes latido {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes vibrar {
+  0%, 95%, 100% { transform: translateX(0); }
+  96% { transform: translateX(-1px); }
+  97% { transform: translateX(1px); }
+  98% { transform: translateX(-1px); }
+  99% { transform: translateX(1px); }
+}
+
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 24px;
+}
+
+.destino {
   margin-top: 20px;
-  display: inline-block;
-  padding: 14px 38px;
-  font-size: 18px;
-  border-radius: 40px;
-  background: transparent;
-  color: #720026;
-  border: 2px solid #b5179e;
-  text-decoration: none;
-  transition: all .4s ease;
+  font-size: 30px;
+  color: white;
+  font-family: 'Playfair Display', serif;
 }
 
-.boton-final:hover {
-  background: linear-gradient(135deg,#720026,#b5179e);
+/* MENSAJE FINAL */
+#mensaje-final {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
   color: white;
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  padding: 30px;
+}
+
+/* CORAZONES */
+.heart {
+  position: fixed;
+  font-size: 22px;
+  animation: flotar 7s linear infinite;
+  opacity: .6;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(100vh); opacity: 0; }
+  15% { opacity: .6; }
+  100% { transform: translateY(-10vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<audio id="musica" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_3a7a1c3a8c.mp3">
+</audio>
+
+<div class="card" onclick="iniciarMusica()">
   <h1>Aurora 💋</h1>
   <div class="sub">Amore… esto no es una invitación cualquiera</div>
 
@@ -159,10 +253,10 @@ ul li {
 
   <ul>
     <li class="escapada-titulo">🏨 Escapada Romántica</li>
-    <li>📍 La Plaza 2</li>
-    <li>📌 Calle Plaza Santa Teresa, 9 – Alicante</li>
-    <li>📞 637 271 970</li>
-    <li>
+    <li class="escapada">📍 La Plaza 2</li>
+    <li class="escapada">📌 Calle Plaza Santa Teresa, 9 – Alicante</li>
+    <li class="escapada">📞 637 271 970</li>
+    <li class="escapada">
       <a class="mapa-btn" href="https://www.google.com/maps/search/?api=1&query=Calle+Plaza+Santa+Teresa+9+Alicante" target="_blank">
         🗺️ Ver ubicación
       </a>
@@ -170,16 +264,66 @@ ul li {
   </ul>
 
   <div class="imagenes-cita">
-    <img src="restaurante.png">
-    <img src="boarding.png">
+    <img src="restaurante.jpg">
+    <img src="boarding.jpg" onclick="abrirLightbox(this.src)">
   </div>
 
-  <button class="boton-amor">Ven conmigo ❤️</button>
-
-  <!-- 🔥 BOTÓN A LA PÁGINA FINAL -->
-  <a href="final.html" class="boton-final">Quiero ver algo más… 💫</a>
-
+  <button class="boton-amor" onclick="final(event)">Ven conmigo ❤️</button>
 </div>
+
+<div id="lightbox" onclick="this.style.display='none'">
+  <div>
+    <img id="lightbox-img">
+    <div class="destino">✈️ Destino: Tú y yo</div>
+  </div>
+</div>
+
+<div id="mensaje-final">
+  Amore…<br><br>
+  ya no hay marcha atrás.<br><br>
+  Esta historia empieza contigo ❤️
+</div>
+
+<script>
+const musica = document.getElementById("musica");
+let musicaIniciada = false;
+
+function iniciarMusica(){
+  if(!musicaIniciada){
+    musica.volume = 0;
+    musica.play();
+    musicaIniciada = true;
+    let v = 0;
+    const fade = setInterval(()=>{
+      v += 0.02;
+      musica.volume = Math.min(v,1);
+      if(v >= 1) clearInterval(fade);
+    },150);
+  }
+}
+
+function abrirLightbox(src){
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function final(e){
+  e.stopPropagation();
+  document.getElementById("mensaje-final").style.display = "flex";
+}
+
+function corazon(){
+  const c = document.createElement("div");
+  c.className = "heart";
+  c.innerText = "💜";
+  c.style.left = Math.random()*100+"vw";
+  c.style.fontSize = 18+Math.random()*22+"px";
+  c.style.animationDuration = 5+Math.random()*3+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),8000);
+}
+setInterval(corazon,450);
+</script>
 
 </body>
 </html>
